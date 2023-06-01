@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Routes, Route, NavLink } from 'react-router-dom';
+import './Styles/App.css'
+import Files from './Components/Files'
+import Login from './Components/Login'
+import Crud from './Components/Crud'
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+
+  const Footer=()=>{
+    return(
+      <div className="footer">
+        <NavLink
+          to='/'
+          className='links'
+          >
+          Files
+        </NavLink>
+        <NavLink
+          to='login'
+          className='links'
+          >
+          Login
+        </NavLink>
+        <NavLink
+          to='crud'
+          className='links'
         >
-          Learn React
-        </a>
-      </header>
+          CRUD
+        </NavLink>
+      </div>
+    )
+  }
+  return (
+    <div className='App'>
+      <Routes>
+        <Route  path='/' element={<Files/>}/>
+        <Route  path='login' element={<Login/>}/>
+        <Route  path='crud' element={<Crud/>}/>
+      </Routes>
+      <Footer/>
     </div>
   );
+
 }
 
 export default App;
